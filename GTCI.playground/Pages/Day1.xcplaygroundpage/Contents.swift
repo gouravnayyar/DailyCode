@@ -1,8 +1,7 @@
+// Average Of Contiguous Subarrays
 // Given an array, find the average of all contiguous subarrays of size ‘K’ in it.
-// link: https://www.educative.io/courses/grokking-the-coding-interview/7D5NNZWQ8Wr
 // Input: Array: [1, 3, 2, 6, -1, 4, 1, 8, 2], K=5
 // Output: [2.2, 2.8, 2.4, 3.6, 2.8]
-
 
 func findAverage(_ array:[Int], size: Int) -> [Double] {
 
@@ -28,7 +27,7 @@ print(findAverage(array, size: 5))
 /// Silding window approach and the complexity would reduce to O(n)
 
 
-func findAverageSlidingWindowApproach(_ array:[Int], size: Int) -> [Double] {
+func findAverageUsingSlidingWindowApproach(_ array:[Int], size: Int) -> [Double] {
     var result: [Double] = []
     var windowSum = 0.0
     var windowStart = 0
@@ -47,5 +46,5 @@ func findAverageSlidingWindowApproach(_ array:[Int], size: Int) -> [Double] {
 }
 
 let newArray = [1, 3, 2, 6, -1, 4, 1, 8, 2]
-print(findAverageSlidingWindowApproach(newArray, size: 5))
+print(findAverageUsingSlidingWindowApproach(newArray, size: 5))
 
