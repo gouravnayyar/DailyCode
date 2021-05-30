@@ -3,5 +3,6 @@
     <pages>
         <page name='AverageOfContiguousSubarrays'/>
         <page name='MaximumSumSubarrayOfSizeK'/>
+        <page name='SmallestSubarrayWithaGivenSum '/>
     </pages>
 </playground>
