@@ -5,6 +5,5 @@
         <page name='MaximumSumSubarrayOfSizeK'/>
         <page name='SmallestSubarrayWithaGivenSum '/>
         <page name='LengthOfTheLongestSubstring'/>
-        <page name='Test'/>
     </pages>
 </playground>

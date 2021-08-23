@@ -11,7 +11,6 @@ struct RotationalCipher {
         var newString = String()
 
         for element in backing {
-            print(":")
             if element.isLetter {
                 let elemetWasUppercase = element.isUppercase
                 let letter = String(element.lowercased())
@@ -34,12 +33,6 @@ struct RotationalCipher {
 
 private var testCaseNumber = 1;
 
-private extension String {
-  var characterArray: String {
-    return "[\"\(self)\"]"
-  }
-}
-
 private extension RotationalCipher {
     static func check(_ expectedValue: String, against output: String) {
       let rightTick = "\u{2713}";
@@ -49,7 +42,7 @@ private extension RotationalCipher {
       if result {
         print("\(rightTick) Test #\(testCaseNumber)")
       } else {
-        print("\(wrongTick) Test #\(testCaseNumber) Expected: \(expectedValue.characterArray) Your output: \(output.characterArray)")
+        print("\(wrongTick) Test #\(testCaseNumber) Expected: [\(expectedValue)] Your output: [\(output)]")
       }
       testCaseNumber += 1
     }
@@ -58,4 +51,5 @@ private extension RotationalCipher {
 let input1 = "All-convoYs-9-be:Alert1."
 let expected1 = "Epp-gsrzsCw-3-fi:Epivx5."
 let output1 = RotationalCipher(backing: input1).cipher(withRotationFactor: 4)
+// First test case
 RotationalCipher.check(expected1, against: output1)
