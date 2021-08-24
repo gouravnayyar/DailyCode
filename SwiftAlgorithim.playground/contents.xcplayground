@@ -5,5 +5,7 @@
         <page name='MaximumSumSubarrayOfSizeK'/>
         <page name='SmallestSubarrayWithaGivenSum '/>
         <page name='LengthOfTheLongestSubstring'/>
+        <page name='RotationalCipher'/>
+        <page name='MatchingPairs'/>
     </pages>
 </playground>
