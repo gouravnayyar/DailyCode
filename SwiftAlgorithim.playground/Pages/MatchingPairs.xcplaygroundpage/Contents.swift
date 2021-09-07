@@ -24,44 +24,38 @@ func matchingPairs(s: String, t: String) -> Int {
     if s == t { return s.count - 2 }
     let s = [Character](s)
     let t = [Character](t)
-    var unmachedPairs = Set<Character>()
     var unmachedInS = Set<Character>()
     var unmachedInT = Set<Character>()
 
     var count = 0
     var foundPerfectSwap = false
-    var maxMatchingPair = 0
 
     for index in 0..<s.count {
         if s[index] == t[index] {
             count += 1
         }
 
-        if s[index] != t[index] {
-            if foundPerfectSwap {
-                foundPerfectSwap = false
-                count = 0
-            }
+        if foundPerfectSwap {
+            continue
+        }
 
-            unmachedPairs.insert(s[index])
-            unmachedPairs.insert(t[index])
+        if s[index] != t[index] {
             unmachedInT.insert(t[index])
             unmachedInS.insert(s[index])
         }
 
         if unmachedInT.contains(s[index]), unmachedInS.contains(t[index]) {
             foundPerfectSwap = true
-            if maxMatchingPair < count + 2 {
-                maxMatchingPair = count + 2
-            }
-        } else if unmachedPairs.contains(t[index]), unmachedPairs.contains(s[index]) {
-            // Found partial match
-            maxMatchingPair = count
         }
     }
 
-    return maxMatchingPair
+    if foundPerfectSwap {
+        return count + 2
+    }
+
+    return count
 }
+
 
 let s1 = "adcnxyzdp"
 let t1 = "abcdxyznp"
