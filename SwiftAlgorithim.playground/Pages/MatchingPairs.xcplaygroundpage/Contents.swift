@@ -24,51 +24,56 @@ func matchingPairs(s: String, t: String) -> Int {
     if s == t { return s.count - 2 }
     let s = [Character](s)
     let t = [Character](t)
-    var unmachedPairs = Set<Character>()
     var unmachedInS = Set<Character>()
     var unmachedInT = Set<Character>()
 
     var count = 0
     var foundPerfectSwap = false
-    var maxMatchingPair = 0
 
     for index in 0..<s.count {
         if s[index] == t[index] {
             count += 1
         }
 
-        if s[index] != t[index] {
-            if foundPerfectSwap {
-                foundPerfectSwap = false
-                count = 0
-            }
+        if foundPerfectSwap {
+            continue
+        }
 
-            unmachedPairs.insert(s[index])
-            unmachedPairs.insert(t[index])
+        if s[index] != t[index] {
             unmachedInT.insert(t[index])
             unmachedInS.insert(s[index])
         }
 
         if unmachedInT.contains(s[index]), unmachedInS.contains(t[index]) {
             foundPerfectSwap = true
-            if maxMatchingPair < count + 2 {
-                maxMatchingPair = count + 2
-            }
-        } else if unmachedPairs.contains(t[index]), unmachedPairs.contains(s[index]) {
-            // Found partial match
-            maxMatchingPair = count
         }
     }
 
-    return maxMatchingPair
+    if foundPerfectSwap {
+        return count + 2
+    }
+
+    return count - 1
 }
+
 
 let s1 = "adcnxyzdp"
 let t1 = "abcdxyznp"
-let expected1 = 7
+let expected1 = 8
 let output1 = matchingPairs(s: s1, t: t1)
-print("expected = [\(expected1)] and outpot = [\(output1)]")
+print("expected 0 = [\(expected1)] and output = [\(output1)]")
 
+let s2 = "axb"
+let t2 = "ayb"
+let expected2 = 1
+let output2 = matchingPairs(s: s2, t: t2)
+print("expected 1 = [\(expected2)] and output = [\(output2)]")
+
+let s3 = "xabcydpkgfqwe"
+let t3 = "xcbanepkgfqwd"
+let expected3 = 10
+let output3 = matchingPairs(s: s3, t: t3)
+print("expected 3 = [\(expected3)] and output = [\(output3)]")
 
 
 
