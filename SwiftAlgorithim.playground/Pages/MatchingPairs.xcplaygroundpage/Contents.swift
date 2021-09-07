@@ -27,46 +27,45 @@ func matchingPairs(s: String, t: String) -> Int {
     var unmachedPairs = Set<Character>()
     var unmachedInS = Set<Character>()
     var unmachedInT = Set<Character>()
+
     var count = 0
     var foundPerfectSwap = false
-    var foundPartialSwap = false
+    var maxMatchingPair = 0
 
     for index in 0..<s.count {
         if s[index] == t[index] {
             count += 1
         }
 
-        if foundPerfectSwap {
-            // No need to keep looking for swaps
-            continue
-        }
-
         if s[index] != t[index] {
+            if foundPerfectSwap {
+                foundPerfectSwap = false
+                count = 0
+            }
+
             unmachedPairs.insert(s[index])
             unmachedPairs.insert(t[index])
             unmachedInT.insert(t[index])
             unmachedInS.insert(s[index])
         }
 
-        if  unmachedPairs.contains(t[index]), unmachedPairs.contains(s[index]) {
+        if unmachedInT.contains(s[index]), unmachedInS.contains(t[index]) {
             foundPerfectSwap = true
-        } else if unmachedInT.contains(s[index]) || unmachedInS.contains(t[index]) {
-            foundPartialSwap = true
+            if maxMatchingPair < count + 2 {
+                maxMatchingPair = count + 2
+            }
+        } else if unmachedPairs.contains(t[index]), unmachedPairs.contains(s[index]) {
+            // Found partial match
+            maxMatchingPair = count
         }
     }
 
-    if foundPerfectSwap {
-        return count + 2
-    } else if foundPartialSwap {
-        return count + 1
-    }
-
-    return 0
+    return maxMatchingPair
 }
 
-let s1 = "adcb"
-let t1 = "abcd"
-let expected1 = 4
+let s1 = "adcnxyzdp"
+let t1 = "abcdxyznp"
+let expected1 = 7
 let output1 = matchingPairs(s: s1, t: t1)
 print("expected = [\(expected1)] and outpot = [\(output1)]")
 
