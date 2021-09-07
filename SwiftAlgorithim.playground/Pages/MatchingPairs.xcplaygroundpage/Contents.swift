@@ -53,16 +53,27 @@ func matchingPairs(s: String, t: String) -> Int {
         return count + 2
     }
 
-    return count
+    return count - 1
 }
 
 
 let s1 = "adcnxyzdp"
 let t1 = "abcdxyznp"
-let expected1 = 7
+let expected1 = 8
 let output1 = matchingPairs(s: s1, t: t1)
-print("expected = [\(expected1)] and outpot = [\(output1)]")
+print("expected 0 = [\(expected1)] and output = [\(output1)]")
 
+let s2 = "axb"
+let t2 = "ayb"
+let expected2 = 1
+let output2 = matchingPairs(s: s2, t: t2)
+print("expected 1 = [\(expected2)] and output = [\(output2)]")
+
+let s3 = "xabcydpkgfqwe"
+let t3 = "xcbanepkgfqwd"
+let expected3 = 10
+let output3 = matchingPairs(s: s3, t: t3)
+print("expected 3 = [\(expected3)] and output = [\(output3)]")
 
 
 
