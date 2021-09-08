@@ -20,42 +20,66 @@ import Foundation
 1. if strings are equal then return length - 2
 2.
 */
+
+func hasDuplicates(_ s: String) -> Bool {
+    let stringSet = Set<Character>(s)
+    return stringSet.count != s.count
+}
+
 func matchingPairs(s: String, t: String) -> Int {
-    if s == t { return s.count - 2 }
-    let s = [Character](s)
-    let t = [Character](t)
-    var unmachedInS = Set<Character>()
-    var unmachedInT = Set<Character>()
+  // If both the strings are same, and string has no duplicates return count - 2 else return count
+  if s == t {
+    if hasDuplicates(s) {
+       return s.count
+    }
+    return s.count - 2
+  }
 
-    var count = 0
-    var foundPerfectSwap = false
+  // Create string arrays
+  let s = [Character](s)
+  let t = [Character](t)
 
-    for index in 0..<s.count {
-        if s[index] == t[index] {
-            count += 1
-        }
+  // Save unmacted characters in seprate sets
+  var unmachedInS = Set<Character>()
+  var unmachedInT = Set<Character>()
 
-        if foundPerfectSwap {
-            continue
-        }
+  // check if its a Perfect Swap or Partial Swap
+  var foundPerfectSwap = false
+  var foundPartialSwap = false
 
-        if s[index] != t[index] {
-            unmachedInT.insert(t[index])
-            unmachedInS.insert(s[index])
-        }
+  // set the initial count to zero
+  var matchingPairCount = 0
 
-        if unmachedInT.contains(s[index]), unmachedInS.contains(t[index]) {
-            foundPerfectSwap = true
-        }
+  for index in 0..<s.count {
+    if s[index] == t[index] {
+        matchingPairCount += 1
     }
 
     if foundPerfectSwap {
-        return count + 2
+        continue
     }
 
-    return count - 1
-}
+    if s[index] != t[index] {
+        unmachedInT.insert(t[index])
+        unmachedInS.insert(s[index])
+    }
 
+    // Decide if it is a partial match or perfect match
+    if unmachedInT.contains(s[index]), unmachedInS.contains(t[index]) {
+        foundPerfectSwap = true
+    } else if unmachedInT.contains(s[index]) || unmachedInS.contains(t[index]) {
+        foundPartialSwap = true
+    }
+  }
+
+  if foundPerfectSwap {
+      return matchingPairCount + 2 // two elements can be swaped
+  } else if foundPartialSwap {
+      return matchingPairCount + 1 // one element can be swapped
+  }
+
+  return matchingPairCount - 1  // No partial or perfect match found, reduce the count by one.
+}
 
 let s1 = "adcnxyzdp"
 let t1 = "abcdxyznp"
