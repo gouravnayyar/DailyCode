@@ -7,5 +7,10 @@
         <page name='LengthOfTheLongestSubstring'/>
         <page name='RotationalCipher'/>
         <page name='MatchingPairs'/>
+        <page name='Stack'/>
+        <page name='MinimumLengthSubstrings'/>
+        <page name='climbStairs'/>
+        <page name='RangeSumOfBST'/>
+        <page name=' RemoveAllAdjacentDuplicates'/>
     </pages>
 </playground>
