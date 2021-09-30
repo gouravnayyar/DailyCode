@@ -1,5 +1,5 @@
 
-func minWindow(_ s: String, _ t: String) -> String {
+func minWindow(_ s: String, _ t: String) -> Int {
     var needMap = [Character:Int]()
     for char in s {
         needMap[char] = 0
@@ -18,7 +18,7 @@ func minWindow(_ s: String, _ t: String) -> String {
     var minLength = Int.max
     var minStart = 0
     var missing = t.count
-    var s = Array(s)
+    let s = Array(s)
 
     while(end < s.count) {
         let current = s[end]
@@ -42,8 +42,9 @@ func minWindow(_ s: String, _ t: String) -> String {
         }
         end += 1
     }
+    return minLength
 
-    return minLength == Int.max ? "" : String(s[minStart..<minStart + minLength])
+//    return minLength == Int.max ? "" : String(s[minStart..<minStart + minLength])
 
 }
 
@@ -51,4 +52,4 @@ let result = minWindow("asadfasfa", "aff")
 let result1 = minWindow("abcdefghabcd", "gaf")
 
 print(result)
-print(result1)
+//print(result1)

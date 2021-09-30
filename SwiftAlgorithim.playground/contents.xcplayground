@@ -6,11 +6,16 @@
         <page name='SmallestSubarrayWithaGivenSum '/>
         <page name='LengthOfTheLongestSubstring'/>
         <page name='RotationalCipher'/>
-        <page name='MatchingPairs'/>
-        <page name='Stack'/>
-        <page name='MinimumLengthSubstrings'/>
-        <page name='climbStairs'/>
-        <page name='RangeSumOfBST'/>
         <page name=' RemoveAllAdjacentDuplicates'/>
+        <page name='climbStairs'/>
+        <page name='MatchingPairs'/>
+        <page name='MinimumLengthSubstrings'/>
+        <page name='RangeSumOfBST'/>
+        <page name='Stack'/>
+        <page name='RightSideViewBST'/>
+        <page name='MinimumRemoveToMakeValidParentheses'/>
+        <page name='MinSwaps'/>
+        <page name='RemoveKDigits'/>
+        <page name='FindTheCommonParent'/>
     </pages>
 </playground>
